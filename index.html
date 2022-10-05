@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Sítesis</title>
+    <!-- Link al javascript -->
+    <script src="./js/valida.js"></script>
+    <!-- Link al css -->
+    <link rel="stylesheet" href="./css/login.css">
+
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="section-1">
+            <div class="column-2">
+                <img src="./img/jesu_logo.png" alt="foto">
+            </div>
+            <div class="column-2" id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Bienvenido
+                    </div>
+                    <form id="loginform" action="./php/login.php" method="POST" enctype="multipart/form-data">
+                        <input type="text" name="usuario" placeholder="Usuario" required>
+
+                        <input type="password" placeholder="Contraseña" name="contraseña" required>
+
+                        <button type="submit" title="Ingresar" name="Ingresar">Entrar</button>
+                    </form>
+                    <!-- <div class="pie-form">
+                    <a href="#">He olvidado mi contraseña</a>
+                </div> -->
+                </div>
+                <!-- <div class="inferior">
+                <a href="#">Acceder como alumno</a>
+            </div> -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
