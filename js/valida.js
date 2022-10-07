@@ -19,7 +19,7 @@ var validaEmail = function(evento) {
 }
 var validaTexto = function(evento) {
     var valor = evento.target.value;
-    if (valor == null || valor.length == 0 || (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/)(valor)) {
+    if (valor == null || valor.length == 0 && (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/)(valor)) {
         document.getElementById(evento.target.id + "_msg").innerHTML = evento.target.name + " no es válido";
         evento.target.style.borderColor = "red";
         evento.target.style.borderWidth = "5px";

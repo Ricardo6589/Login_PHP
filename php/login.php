@@ -1,23 +1,24 @@
 <?php
 session_start();
-$user=$_POST['usuario'];
-$pwd=$_POST['contraseña'];
-include 'connection.php';
+$email=$_POST['email'];
+$password=$_POST['password'];
 
-// $pwdhash = password_hash($pwd, PASSWORD_BCRYPT);
-$select1 = "SELECT * FROM tbl_profesores where $user = correo";
-$sele1= mysqli_query($connection, $select1);
-$seleL1 = mysqli_num_rows($sele1);
+require_once 'conexion.php';
+$consulta=mysqli_query("SELECT * FROM tbl_profesores where email=$email");
 
-if ($seleL1 == 1) {
-    $seleF1=mysqli_fetch_array($sele1);
-} else {
-    header('Location: ../index.php?exist=0');
-}
 
-if ($seleF1['correo'] == $user && $seleF1['contraseña'] == $pwd) {
-    $_SESSION['usuario']=$user;  
-      
-}else {
-    header('Location: ../index.html');
-}
+    if(!$consulta){
+
+        // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " .
+        
+        
+        echo mysqli_error($mysqli);
+        
+        // si la consulta falla es bueno evitar que el código se siga ejecutando
+        exit;
+        
+        
+        }
+    # code...
+
+
