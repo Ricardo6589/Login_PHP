@@ -17,10 +17,11 @@ var validaEmail = function(evento) {
     }
 
 }
-var validaTexto = function(evento) {
+var validaContra = function(evento) {
+
     var valor = evento.target.value;
-    if (valor == null || valor.length == 0 && (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/)(valor)) {
-        document.getElementById(evento.target.id + "_msg").innerHTML = evento.target.name + " no es válido";
+    if (valor == null && valor.length == 0 && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/.test(valor)) {
+        document.getElementById(evento.target.id + "_msg").innerHTML = evento.target.name + " no puede estar vacio";
         evento.target.style.borderColor = "red";
         evento.target.style.borderWidth = "5px";
         evento.target.focus();
@@ -32,9 +33,8 @@ var validaTexto = function(evento) {
     }
 }
 
-
 window.onload = function() {
 
-    document.getElementById("element_4").onblur = validaEmail;
-    document.getElementById("element_3").onblur = validaContra;
+    document.getElementById("element_1").onblur = validaEmail;
+    document.getElementById("element_2").onblur = validaContra;
 }
