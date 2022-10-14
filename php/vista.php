@@ -8,8 +8,11 @@
 </head>
 <body>
     <?php
-
-    include 'connection.php';
+    
+    // if(empty($sesion)){ 
+    //     echo'<script>window.location.href = "../index.html" </script>';
+    // }else{
+    include 'conexion.php';
     
     $sql = "SELECT * FROM tbl_profesores";
     $listadodept = mysqli_query($connection, $sql); 
@@ -19,12 +22,11 @@
     echo '<th>apellidos/th>';
     echo '<th>correo</th>';   
     echo '<th>dni</th>';
-    echo '<th>classe</th>';  
+    echo '<th>telefono</th>';  
     echo '</tr>';
     foreach ($listadodept as $tbl_profesores) {
         
-        echo '<tr>';
-        echo "<td>{$tbl_profesores['id']}</td>";               
+        echo '<tr>';                    
         echo "<td>{$tbl_profesores['nombre']}</td>";
         echo "<td>{$tbl_profesores['apellidos']}</td>";
         echo "<td>{$tbl_profesores['correo']}</td>";        
@@ -32,7 +34,7 @@
         echo "<td>{$tbl_profesores['telefono']}</td>";          
     }
     echo '</table>';
-
+    // }
     ?>
 </body>
 </html>

@@ -1,24 +1,31 @@
 <?php
-session_start();
-$email=$_POST['email'];
-$password=$_POST['password'];
+ 
+    require_once 'conexion.php';
+    $sesion=session_start();
+ 
+    $correo = $_POST['correo'];
+    $contraseña = $_POST['contraseña'];
+    $passwordHash = sha1($contraseña);  
 
-require_once 'conexion.php';
-$consulta=mysqli_query("SELECT * FROM tbl_profesores where email=$email");
+    echo $passwordHash;  
+ 
+    $correo = $connection -> real_escape_string($correo);
+    $sql = "SELECT * FROM tbl_profesores WHERE correo = '$correo' and contraseña = '$passwordHash'";
 
+    $resultados = mysqli_query($connection,$sql);
+    $num=mysqli_num_rows($resultados);
+   
 
-    if(!$consulta){
-
-        // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " .
+    if ($num==1){
+        session_start();
+        $sesion['conexion']=$user;
+        header("Location: ./vista.php");
+    }else{
+        session_start();
+        $sesion['error']='error';
+        echo "<script>window. alert('El correo o la contraseña son incorrectos')</script>";
+        header("Location: ../index.html");
         
-        
-        echo mysqli_error($mysqli);
-        
-        // si la consulta falla es bueno evitar que el código se siga ejecutando
-        exit;
-        
-        
-        }
-    # code...
-
-
+    }
+ 
+?>
