@@ -1,8 +1,9 @@
 <?php
  
     require_once 'conexion.php';
-    $sesion=session_start();
- 
+
+
+    
     $correo = $_POST['correo'];
     $contraseña = $_POST['contraseña'];
     $passwordHash = sha1($contraseña);  
@@ -16,16 +17,13 @@
     $num=mysqli_num_rows($resultados);
    
 
-    if ($num==1){
-        session_start();
-        $sesion['conexion']=$user;
-        header("Location: ./vista.php");
-    }else{
-        session_start();
-        $sesion['error']='error';
-        echo "<script>window. alert('El correo o la contraseña son incorrectos')</script>";
-        header("Location: ../index.html");
-        
+    if ($num==1){          
+        session_start();        
+        $_SESSION['correo'] = $correo;
+        echo"<script>window.location.href = 'vista.php' </script>";
+    }else{               
+        session_start();             
+        echo"<script>window.location.href = '../index.html' </script>";
     }
  
 ?>

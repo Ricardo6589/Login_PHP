@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login Sítesis</title>
+        <!-- Link al css -->
+        <link rel="stylesheet" href="../css/login.css" />
+        <!-- Link al javascript -->
+        <script type="text/javascript" src="../js/valida.js"></script>
+    </head>
 <body>
-    <?php
-    
-    // if(empty($sesion)){ 
-    //     echo'<script>window.location.href = "../index.html" </script>';
-    // }else{
-    include 'conexion.php';
-    
-    $sql = "SELECT * FROM tbl_profesores";
-    $listadodept = mysqli_query($connection, $sql); 
-    echo '<table>';
-    echo '<tr>';
-    echo '<th>nombre</th>';
-    echo '<th>apellidos/th>';
-    echo '<th>correo</th>';   
-    echo '<th>dni</th>';
-    echo '<th>telefono</th>';  
-    echo '</tr>';
-    foreach ($listadodept as $tbl_profesores) {
+    <?php  
+
+        session_start();
         
-        echo '<tr>';                    
-        echo "<td>{$tbl_profesores['nombre']}</td>";
-        echo "<td>{$tbl_profesores['apellidos']}</td>";
-        echo "<td>{$tbl_profesores['correo']}</td>";        
-        echo "<td>{$tbl_profesores['dni']}</td>";
-        echo "<td>{$tbl_profesores['telefono']}</td>";          
-    }
-    echo '</table>';
-    // }
-    ?>
+        if(empty($_SESSION['correo'])){ 
+            echo"<script>window.location.href = '../index.html' </script>";
+        }else{
+
+    ?> 
+     
+
+        <div class="parent clearfix">
+            <div class="bg-illustration">;
+                <img src="../img/logo-jesuites-educacio-b.svg" alt="logo" />
+            </div>
+
+            <div class="login">
+                <div class="container">
+                    <h1>Entraste dentro<br />de la página Web</h1>
+                </div>
+            </div>
+            </div>';
+        
+         <?php
+        }
+        ?>
+
+    
 </body>
 </html>
