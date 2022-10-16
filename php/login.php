@@ -6,11 +6,10 @@
     
     $correo = $_POST['correo'];
     $contraseña = $_POST['contraseña'];
-    $passwordHash = sha1($contraseña);  
-
-    echo $passwordHash;  
+    $passwordHash = sha1($contraseña);      
  
     $correo = $connection -> real_escape_string($correo);
+    
     $sql = "SELECT * FROM tbl_profesores WHERE correo = '$correo' and contraseña = '$passwordHash'";
 
     $resultados = mysqli_query($connection,$sql);
